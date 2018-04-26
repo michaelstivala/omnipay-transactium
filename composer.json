@@ -1,0 +1,36 @@
+{
+    "name": "michaelstivala/omnipay-transactium",
+    "type": "library",
+    "description": "Transactium gateway for Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "transactium",
+        "purchase"
+    ],
+    "homepage": "https://michaelstivala.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Stivala",
+            "email": "michaelstivala@me.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Transactium\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+    }
+}
