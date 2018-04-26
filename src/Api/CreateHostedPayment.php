@@ -24,12 +24,12 @@ class CreateHostedPayment extends AbstractRequest
                 'TransactionRequest' => [
                     [
                         'BusinessUnitID' => '0',
-                        'Amount' => intval($this->parameters->get('amount') * 100),
+                        'Amount' => $this->getAmountInteger(),
                     ],
                 ],
             ],
             'Tag' => 'HPSTag',
-            'TotalAmount' => intval($this->parameters->get('amount') * 100),
+            'TotalAmount' => $this->getAmountInteger(),
             'Type' => 'Sale',
             'RequireAllApproved' => false,
             // 10 minutes from now
