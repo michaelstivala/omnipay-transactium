@@ -45,6 +45,7 @@ class Gateway extends AbstractGateway
         return array(
             'username' => '',
             'password' => '',
+            'tag' => 'HPSTag',
             'testMode' => false,
         );
     }
@@ -69,6 +70,16 @@ class Gateway extends AbstractGateway
         return $this->setParameter('password', $value);
     }
 
+    public function getTag()
+    {
+        return $this->getParameter('tag');
+    }
+
+    public function setTag($value)
+    {
+        return $this->setParameter('tag', $value);
+    }
+
     public function getHostedPayment(string $transactiumId)
     {
         return $this->createRequest(GetHostedPayment::class, ['HPSID' => $transactiumId]);
@@ -89,6 +100,8 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = array())
     {
+        $parameters['tag'] = $this->getTag();
+        
         return $this->createRequest(CreateHostedPayment::class, $parameters);
     }
 

@@ -28,7 +28,7 @@ class CreateHostedPayment extends AbstractRequest
                     ],
                 ],
             ],
-            'Tag' => 'HPSTag',
+            'Tag' => $this->parameters->get('tag'),
             'TotalAmount' => $this->getAmountInteger(),
             'Type' => 'Sale',
             'RequireAllApproved' => false,
