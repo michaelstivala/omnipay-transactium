@@ -245,11 +245,21 @@ abstract class AbstractRequest implements RequestInterface
      * @throws InvalidRequestException on any validation failure.
      * @return float The amount converted to a float.
      */
-
     public function toFloat($value)
     {
         try {
-            return Helper::toFloat($value);
+            if (!is_string($value) && !is_int($value) && !is_float($value)) {
+                throw new InvalidArgumentException('Data type is not a valid decimal number.');
+            }
+
+            if (is_string($value)) {
+                // Validate generic number, with optional sign and decimals.
+                if (!preg_match('/^[-]?[0-9]+(\.[0-9]*)?$/', $value)) {
+                    throw new InvalidArgumentException('String is not a valid decimal number.');
+                }
+            }
+
+            return (float)$value;
         } catch (InvalidArgumentException $e) {
             // Throw old exception for legacy implementations.
             throw new InvalidRequestException($e->getMessage(), $e->getCode(), $e);
