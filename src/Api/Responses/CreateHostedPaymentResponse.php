@@ -8,7 +8,7 @@ class CreateHostedPaymentResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return !! $this->getRedirectUrl();
+        return false;
     }
 
     public function isRedirect()
@@ -48,7 +48,7 @@ class CreateHostedPaymentResponse extends AbstractResponse
 
     public function getMessage()
     {
-        if ($this->isSuccessful()) {
+        if (!! $this->getRedirectUrl()) {
             return "Success";
         }
 
