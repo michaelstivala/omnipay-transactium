@@ -23,7 +23,8 @@
         "psr-4": { "Omnipay\\Transactium\\" : "src/" }
     },
     "require": {
-        "omnipay/common": "~2.0"
+        "omnipay/common": "^3.0",
+        "league/omnipay": "^3"
     },
     "require-dev": {
         "omnipay/tests": "~2.0"
