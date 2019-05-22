@@ -32,6 +32,8 @@ class Gateway extends AbstractGateway
     {
         $obj = new $class($this->getClient(), $this->httpRequest);
 
+        $parameters['tag'] = $this->getTag();
+
         return $obj->initialize($parameters);
     }
 

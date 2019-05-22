@@ -2,6 +2,7 @@
 
 namespace Omnipay\Transactium\Api;
 
+use Craft;
 use SoapVar;
 use DateTime;
 use SoapClient;
@@ -14,7 +15,11 @@ class CreateHostedPayment extends AbstractRequest
 {
     public function sendData($data)
     {
-        return new CreateHostedPaymentResponse($this, $this->soapClient->CreateHostedPayment($data));
+        try {
+            return new CreateHostedPaymentResponse($this, $this->soapClient->CreateHostedPayment($data));
+        } finally {
+            Craft::getLogger()->log($this->soapClient->__getLastRequest() . " - Original: " . print_r($data, true), 0x01);
+        }
     }
 
     public function getData()

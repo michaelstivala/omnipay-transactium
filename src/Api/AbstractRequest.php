@@ -56,6 +56,11 @@ abstract class AbstractRequest implements RequestInterface
     protected $negativeAmountAllowed = false;
 
     /**
+     * @var string
+     */
+    protected $tag;
+
+    /**
      * Create a new Request
      *
      * @param ClientInterface $soapClient  A Soap client to make API calls with
@@ -150,6 +155,16 @@ abstract class AbstractRequest implements RequestInterface
     public function setTestMode($value)
     {
         return $this->setParameter('testMode', $value);
+    }
+
+    /**
+     * Set the transactium tag.
+     *
+     * @param string $value
+     */
+    public function setTag($value)
+    {
+        return $this->setParameter('tag', $value);
     }
 
     /**
