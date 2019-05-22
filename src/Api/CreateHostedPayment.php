@@ -77,6 +77,7 @@ class CreateHostedPayment extends AbstractRequest
                 'ProcessWithSavePI' => '1',
                 'ProcessWithRandomCode' => '1',
                 'IFrame' => '1',
+                'ReceiptPage' => '0',
             ],
         ];
 
